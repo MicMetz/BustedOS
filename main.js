@@ -38,7 +38,7 @@ var terminal = $('#Busted-OS').terminal(function (command, term) {
     ' |    |  _/  |  \\/  ___/\\   __\\/ __ \\ / __ |  ______  /   |   \\ \\_____  \\ \n' +
     ' |    |   \\  |  /\\___ \\  |  | \\  ___// /_/ | /_____/ /    |    \\/        \\\n' +
     ' |______  /____//____  > |__|  \\___  >____ |         \\_______  /_______  /\n' +
-    '----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n',
+    '-----------------------------------------------------------------------------------------------------------------------------------------------------------\n',
   
   name: 'Busted-OS',
   height: 200,
@@ -53,7 +53,6 @@ var terminal = $('#Busted-OS').terminal(function (command, term) {
 
 
 function resize() {
-  // for window height of 170 it should be 2s
   var height = window.innerHeight;
   var width  = window.innerWidth;
   var time   = (height * 2) / 170;
@@ -88,9 +87,9 @@ function _help(term) {
   term.echo('-date : display the current date');
   term.echo('-time : display the current time');
   
-  term.echo('-vol -set -<value> : set the volume to <value>');
-  term.echo('-vol -inc : increase the volume by 5%');
-  term.echo('-vol -dec : decrease the volume by 5%');
+  term.echo('-vol -set -<value> : set the volume to a value between 0 and 100');
+  term.echo('-vol -inc : increase the volume by 5% (default), or by a value between 0 and 100');
+  term.echo('-vol -dec : decrease the volume by 5% (default), or by a value between 0 and 100');
   term.echo('-vol -mute : mute the volume');
   term.echo('-vol -unmute : unmute the volume');
   term.echo('-vol -toggle : toggle the volume');
@@ -103,12 +102,64 @@ function _help(term) {
 
 
 function _setVolume(command, term) {
+  var cmd = command.trim();
+  var vol = cmd.match(/-set -[0-9]{1,3}/i);
+  vol     = vol[0].replace(/-set -/i, '');
+  vol     = parseInt(vol);
+  term.echo('Volume set to ' + vol + '%');
   
 }
 
 
+
+
 function _clear(term) {
+  term.clear();
+  term.echo(
+    '__________                __             .___        ________    _________\n' +
+    '\\______   \\__ __  _______/  |_  ____   __| _/        \\_____  \\  /   _____/\n' +
+    ' |    |  _/  |  \\/  ___/\\   __\\/ __ \\ / __ |  ______  /   |   \\ \\_____  \\ \n' +
+    ' |    |   \\  |  /\\___ \\  |  | \\  ___// /_/ | /_____/ /    |    \\/        \\\n' +
+    ' |______  /____//____  > |__|  \\___  >____ |         \\_______  /_______  /\n' +
+    '-----------------------------------------------------------------------------------------------------------------------------------------------------------\n',
+  );
   
+}
+
+
+function _incVolume(command, term) {
+  var cmd = command.trim();
+  var vol = cmd.match(/-inc -[0-9]{1,3}/i);
+  vol     = vol[0].replace(/-inc -/i, '');
+  vol     = parseInt(vol);
+  term.echo('Volume increased by ' + vol + '%');
+}
+
+
+function _decVolume(command, term) {
+  var cmd = command.trim();
+  var vol = cmd.match(/-dec -[0-9]{1,3}/i);
+  vol     = vol[0].replace(/-dec -/i, '');
+  vol     = parseInt(vol);
+  term.echo('Volume decreased by ' + vol + '%');
+}
+
+
+function _getDate(cmd, term) {
+  var date = new Date();
+  var day  = date.getDate();
+  var mon  = date.getMonth() + 1;
+  var year = date.getFullYear();
+  term.echo(day + '/' + mon + '/' + year);
+}
+
+
+function _getCurrentTime(cmd, term) {
+  var date = new Date();
+  var hour = date.getHours();
+  var min  = date.getMinutes();
+  var sec  = date.getSeconds();
+  term.echo(hour + ':' + min + ':' + sec);
 }
 
 
@@ -130,20 +181,29 @@ function processCommand(command, term) {
   }
   
   if (cmd.match(/-date/i)) {
-    term.echo(new Date());
+    _getDate(cmd, term);
   }
   
   if (cmd.match(/-time/i)) {
-    term.echo(new Date().toLocaleTimeString());
+    // term.echo(new Date().toLocaleTimeString());
+    _getCurrentTime(cmd, term);
   }
   
   if (cmd.match(/-vol -set -[0-9]{1,3}/i)) {
     _setVolume(cmd, term);
   }
   
+  if (cmd.match(/-vol -inc/i)) {
+    _incVolume(cmd, term);
+  }
+  
+  if (cmd.match(/-vol -dec/i)) {
+    _decVolume(cmd, term);
+  }
+  
   
   // Unrecognized cmd
-  if (!cmd.match(/-help/i) && !cmd.match(/-clear/i) && !cmd.match(/-date/i) && !cmd.match(/-time/i) && !cmd.match(/-vol -set -[0-9]{1,3}/i)) {
+  if (!cmd.match(/-help/i) && !cmd.match(/-clear/i) && !cmd.match(/-date/i) && !cmd.match(/-time/i) && !cmd.match(/-vol -set -[0-9]{1,3}/i) && !cmd.match(/-vol -inc/i) && !cmd.match(/-vol -dec/i)) {
     term.echo('Unrecognized command: ' + command, {
       finalize: function (span) {
         span.css('color', 'red');
