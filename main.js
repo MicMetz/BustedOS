@@ -3,6 +3,8 @@ import "https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.js"
 /*
   Terminal Commands for JavaScript Terminal Emulator
   https://terminal.jcubic.pl/
+  
+  Using https://github.com/toofpaste/PlagueInc/tree/master/ as a reference
 */
 
 
@@ -23,7 +25,7 @@ const bustedOS  = $('#Busted-terminal');
  * */
 var terminal = $('#Busted-OS').terminal(function (command, term) {
   if (command.match(/^\s*exit\s*$/)) {
-    $('.bustedOS').addClass('collapse');
+    bustedOS.addClass('collapse');
     term.disable();
   } else if (command !== '') {
     processCommand(command, term);
@@ -36,11 +38,12 @@ var terminal = $('#Busted-OS').terminal(function (command, term) {
     ' |    |  _/  |  \\/  ___/\\   __\\/ __ \\ / __ |  ______  /   |   \\ \\_____  \\ \n' +
     ' |    |   \\  |  /\\___ \\  |  | \\  ___// /_/ | /_____/ /    |    \\/        \\\n' +
     ' |______  /____//____  > |__|  \\___  >____ |         \\_______  /_______  /\n' +
-    '-----------------------------------------------------------------------------------------------------------------------------------------------------------\n',
-  // greetings: 'Welcome to Busted-OS',
+    '----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------\n',
+  
   name: 'Busted-OS',
   height: 200,
   prompt: '#> ',
+  enabled: $('body').attr('onload') === undefined,
   onInit: function () {
     reSize();
   },
@@ -58,6 +61,23 @@ function reSize() {
   bustedOS.css('width', width / 2);
   bustedOS.css('height', height - (height / 3));
   
+}
+
+
+function terminalUpdate() {
+  
+  
+  
+  // if (updateIndex >= updateLines.length) {
+  //   updateIndex = 0;
+  // }
+  //
+  // terminal.echo(updateLines[updateIndex]);
+  // updateIndex++;
+  
+  // if (updateIndex < updateLines.length) {
+  //   setTimeout(termUpdate, 1000);
+  // }
 }
 
 
@@ -125,11 +145,14 @@ function processCommand(command, term) {
   // Unrecognized cmd
   if (!cmd.match(/-help/i) && !cmd.match(/-clear/i) && !cmd.match(/-date/i) && !cmd.match(/-time/i) && !cmd.match(/-vol -set -[0-9]{1,3}/i)) {
     term.echo('Unrecognized command: ' + command, {
-      finalize: function (div) {
-        div.css('color', 'red');
+      finalize: function (span) {
+        span.css('color', 'red');
       }
     });
     
   }
   
 }
+
+
+setInterval(terminalUpdate, 1000);

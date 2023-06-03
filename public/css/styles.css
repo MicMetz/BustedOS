@@ -329,31 +329,31 @@ footer {
 
 
 .terminal-output {
-    font-family : 'Press Start 2P', cursive;
+    /* font-family : 'Press Start 2P', cursive; */
     /* font-size   : 1.5em; */
-    color       : #C9BD95;
+    color : #C9BD95;
     /* line-height : 1.5em; */
 }
 
 
 .terminal-output div:first-child div span {
-    font-kerning   : none;
-    /* font-size   : 1.5em; */
-    display        : block;
-    overflow       : hidden;
-    word-wrap      : normal;
-    white-space    : nowrap;
-    line-height    : 1em;
-    letter-spacing : 0.1em;
-    text-align     : center;
-    /* text-overflow    : clip; */
-    /* white-space      : nowrap; */
-    /* animation        : blink calc(var(--time, 2) * 1s) steps(1) infinite; */
-    /* animation-delay  : calc(var(--time, 2) * 1s); */
-    /* animation-iteration-count : infinite; */
+    display       : block;
+    overflow      : hidden;
+    white-space   : nowrap;
+    text-overflow : ellipsis;
+    text-align    : center;
+    /* color                 : #C9BD95; */
+    /* white-space           : normal; */
+    /* margin                : 0; */
+    /* padding               : 0; */
+    /* font-family           : sans-serif; */
+    /* font-feature-settings : 'liga' 0; */
 
-    /* animation        : blink calc(var(--time, 2) * 1s) steps(1) infinite; */
-    /* animation-delay  : calc(var(--time, 2) * 1s); */
+}
 
 
+.collapse {
+    transition : all 0.5s ease;
+    height     : 0;
+    overflow   : hidden;
 }

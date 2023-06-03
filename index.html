@@ -4,23 +4,23 @@
 	<head >
 		<meta charset = "UTF-8">
 		<meta content = "width=device-width, initial-scale=1, minimum-scale=1" name = "viewport"/>
-		<title >Bad Volume</title >
+		<title >BustedOS</title >
 		<script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script >
-		
 		<link href = "https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" rel = "stylesheet"/>
 		<link href = "public/css/_ribbon.css" rel = "stylesheet"/>
-		<link href = "styles.css" rel = "stylesheet"/>
+		<link href = "public/css/styles.css" rel = "stylesheet"/>
+		<link href = "public/css/terminal.css" rel = "stylesheet"/>
 	</head >
 	
 	<body >
 		<div class = "ribbon ribbon-top-right">
-			<a href = "https://github.com/MicMetz" target = "_blank"><span >Github</span ></a >
+			<a href = "https://github.com/MicMetz/BustedOS" target = "_blank"><span >Github</span ></a >
 		</div >
 		
 		<div id = "Busted-terminal">
 			<div id = "busted-terminal-header">
 				<div id = "busted-terminal-title-bar">
-					<p id = "busted-terminal-title">Busted-OS</p >
+					<p id = "busted-terminal-title">BustedOS</p >
 				</div >
 				<div id = "busted-terminal-header-button-group">
 					<div class = "busted-terminal-button" id = "busted-terminal-close"></div >
@@ -30,12 +30,6 @@
 			</div >
 			<div class = "term" id = "Busted-OS"></div >
 			<div class = "scanline"></div >
-			<!-- <div id = "busted-terminal-body">
-				<div id = "busted-terminal-content">
-					<div id = "busted-terminal-prompt">$</div >
-					<div contenteditable = "true" id = "busted-terminal-input"></div >
-				</div >
-			</div > -->
 		</div >
 		
 		
@@ -48,7 +42,7 @@
 		<script src = "https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.mousewheel-min.js"></script >
 		
 		<script type = "module">
-          import ScrambleText from "../../public/vendor/scramble-text/src/ScrambleText.js";
+          import ScrambleText from "public/vendor/scramble-text/src/ScrambleText.js";
           
           
           
@@ -66,10 +60,10 @@
           
           window.addEventListener("keydown", function (e) {
             if (e.key === "Enter") {
-              var input = $("#busted-terminal-input").text();
-              $("#busted-terminal-input").text("");
+              var input = $("#busted-terminal-input");
+              input.text("");
               $("#busted-terminal-content").append("<div>" + input + "</div>");
-              $("#busted-terminal-input").focus();
+              input.focus();
             }
           });
 		</script >

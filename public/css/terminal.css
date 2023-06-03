@@ -1,0 +1,58 @@
+.terminal, .cmd {
+    background : white;
+    color      : #FF9D3C;
+}
+
+
+.terminal .inverted, .cmd .inverted, .cmd .cursor.blink {
+    background-color : #FF9D3C;
+    color            : white;
+}
+
+
+@-webkit-keyframes terminal-blink {
+    0%, 100% {
+        background-color : #FFFFFF;
+        color            : #FF9D3C;
+    }
+    50% {
+        background-color : #EE9A2E;
+        color            : #FFFFFF;
+    }
+}
+
+
+@-ms-keyframes terminal-blink {
+    0%, 100% {
+        background-color : #FFFFFF;
+        color            : #FF9D3C;
+    }
+    50% {
+        background-color : #EE9A2E;
+        color            : #FFFFFF;
+    }
+}
+
+
+@-moz-keyframes terminal-blink {
+    0%, 100% {
+        background-color : #FFFFFF;
+        color            : #FF9D3C;
+    }
+    50% {
+        background-color : #EE9A2E;
+        color            : #FFFFFF;
+    }
+}
+
+
+@keyframes terminal-blink {
+    0%, 100% {
+        background-color : #FFFFFF;
+        color            : #FF9D3C;
+    }
+    50% {
+        background-color : #EE9A2E;
+        color            : #FFFFFF;
+    }
+}
