@@ -3,13 +3,13 @@
 	
 	<head >
 		<meta charset = "UTF-8">
-		<meta content = "width=device-width, initial-scale=1, minimum-scale=1" name = "viewport"/>
+		<meta content = "width=device-width, initial-scale=1, minimum-scale=1" name = "viewport">
 		<title >BustedOS</title >
 		<script src = "https://code.jquery.com/jquery-3.6.0.min.js"></script >
-		<link href = "https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" rel = "stylesheet"/>
-		<link href = "public/css/_ribbon.css" rel = "stylesheet"/>
-		<link href = "public/css/styles.css" rel = "stylesheet"/>
-		<link href = "public/css/terminal.css" rel = "stylesheet"/>
+		<link href = "https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css" rel = "stylesheet">
+		<link href = "./public/css/_ribbon.css" rel = "stylesheet">
+		<link href = "./public/css/styles.css" rel = "stylesheet">
+		<link href = "./public/css/terminal.css" rel = "stylesheet">
 	</head >
 	
 	<body >
@@ -42,7 +42,7 @@
 		<script src = "https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.mousewheel-min.js"></script >
 		
 		<script type = "module">
-          import ScrambleText from "public/vendor/scramble-text/src/ScrambleText.js";
+          import ScrambleText from "./public/vendor/scramble-text/src/ScrambleText.js";
           
           
           
@@ -65,6 +65,19 @@
               $("#busted-terminal-content").append("<div>" + input + "</div>");
               input.focus();
             }
+          });
+          
+          $("#busted-terminal-close").click(function () {
+            $("#Busted-terminal").hide();
+          });
+          
+          $("#busted-terminal-minimize").click(function () {
+            $("#Busted-terminal").hide();
+          });
+          
+          
+          window.addEventListener("resize", function () {
+            resize();
           });
 		</script >
 	</body >

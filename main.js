@@ -45,14 +45,14 @@ var terminal = $('#Busted-OS').terminal(function (command, term) {
   prompt: '#> ',
   enabled: $('body').attr('onload') === undefined,
   onInit: function () {
-    reSize();
+    resize();
   },
 });
 
 
 
 
-function reSize() {
+function resize() {
   // for window height of 170 it should be 2s
   var height = window.innerHeight;
   var width  = window.innerWidth;
@@ -103,12 +103,12 @@ function _help(term) {
 
 
 function _setVolume(command, term) {
-
+  
 }
 
 
 function _clear(term) {
-
+  
 }
 
 
