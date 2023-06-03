@@ -14,6 +14,8 @@
 
     --width        : 100vw;
     --height       : 100vh;
+
+    --time         : 1s;
 }
 
 
@@ -87,36 +89,6 @@ footer {
 
     /* min-height : 50%; */
     /* height     : fit-content; */
-}
-
-
-#busted-terminal-close-button {
-
-}
-
-
-#busted-terminal-close-button:hover {
-    cursor : pointer;
-}
-
-
-#busted-terminal-minimize-button {
-
-}
-
-
-#busted-terminal-minimize-button:hover {
-    cursor : pointer;
-}
-
-
-#busted-terminal-maximize-button {
-
-}
-
-
-#busted-terminal-maximize-button:hover {
-    cursor : pointer;
 }
 
 
@@ -200,24 +172,55 @@ footer {
 
 #busted-terminal-header-button-group {
     display         : flex;
-    justify-content : space-between;
+    flex-direction  : row;
+    flex-wrap       : nowrap;
+    flex-flow       : row nowrap;
+    justify-content : flex-end;
     align-items     : center;
-
     width           : 100%;
     height          : fit-content;
-    min-height      : 1em;
-    background      : transparent;
-    border          : none;
+    min-height      : 2em;
+    margin-top      : 1em;
+    /* padding         :  */
+    right           : 0;
+    top             : 0;
+    left            : 0;
+
 }
 
 
-#busted-terminal-button {
-    display       : block;
-    color         : white;
-    border-radius : 4px;
-    border        : none;
-    padding       : 10px 20px;
-    cursor        : pointer;
+
+
+#busted-terminal-close-button {
+    background-color : red;
+
+}
+
+
+#busted-terminal-maximize-button {
+    background-color : green;
+}
+
+
+#busted-terminal-minimize-button {
+    background-color : yellow;
+}
+
+
+.busted-terminal-button {
+    display       : inline-block;
+    max-width     : 1em;
+    border-radius : 50%;
+    width         : 1em;
+    height        : 1em;
+    border        : 1px solid #C9BD95;
+    position      : relative;
+    margin-left   : 1em;
+}
+
+
+.busted-terminal-button:hover {
+    cursor : pointer;
 }
 
 
@@ -329,19 +332,22 @@ footer {
 
 
 .terminal-output {
-    /* font-family : 'Press Start 2P', cursive; */
-    /* font-size   : 1.5em; */
-    color : #C9BD95;
+    font-family : 'Press Start 2P', cursive;
+    font-size   : 1.5em;
+    color       : #C9BD95;
     /* line-height : 1.5em; */
 }
 
 
 .terminal-output div:first-child div span {
-    display       : block;
+    /* display       : block; */
     overflow      : hidden;
     white-space   : nowrap;
     text-overflow : ellipsis;
     text-align    : center;
+    font-family   : 'Courier New', monospace;
+    margin        : 0;
+    font-size     : calc(var(--size, 1) * (12px / var(--pixel-density, 1))) 1
     /* color                 : #C9BD95; */
     /* white-space           : normal; */
     /* margin                : 0; */

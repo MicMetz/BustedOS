@@ -15,6 +15,27 @@ var time        = (window.innerHeight * 2) / 170;
 const bustedOS  = $('#Busted-terminal');
 
 
+window.addEventListener("keydown", function (e) {
+  if (e.key === "Enter") {
+    var input = $("#busted-terminal-input");
+    input.text("");
+    $("#busted-terminal-content").append("<div>" + input + "</div>");
+    input.focus();
+  }
+});
+
+$("#busted-terminal-close").click(function () {
+  $("#Busted-terminal").hide();
+});
+
+$("#busted-terminal-minimize").click(function () {
+  $("#Busted-terminal").hide();
+});
+
+
+window.addEventListener("resize", function () {
+  resize();
+});
 
 
 /**
@@ -38,7 +59,7 @@ var terminal = $('#Busted-OS').terminal(function (command, term) {
     ' |    |  _/  |  \\/  ___/\\   __\\/ __ \\ / __ |  ______  /   |   \\ \\_____  \\ \n' +
     ' |    |   \\  |  /\\___ \\  |  | \\  ___// /_/ | /_____/ /    |    \\/        \\\n' +
     ' |______  /____//____  > |__|  \\___  >____ |         \\_______  /_______  /\n' +
-    '-----------------------------------------------------------------------------------------------------------------------------------------------------------\n',
+    '\n\n',
   
   name: 'Busted-OS',
   height: 200,
@@ -121,7 +142,7 @@ function _clear(term) {
     ' |    |  _/  |  \\/  ___/\\   __\\/ __ \\ / __ |  ______  /   |   \\ \\_____  \\ \n' +
     ' |    |   \\  |  /\\___ \\  |  | \\  ___// /_/ | /_____/ /    |    \\/        \\\n' +
     ' |______  /____//____  > |__|  \\___  >____ |         \\_______  /_______  /\n' +
-    '-----------------------------------------------------------------------------------------------------------------------------------------------------------\n',
+    '\n\n',
   );
   
 }

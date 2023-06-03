@@ -24,9 +24,9 @@
 					<p id = "busted-terminal-title">Busted-OS</p >
 				</div >
 				<div id = "busted-terminal-header-button-group">
-					<div class = "busted-terminal-button" id = "busted-terminal-close"></div >
-					<div class = "busted-terminal-button" id = "busted-terminal-minimize"></div >
-					<div class = "busted-terminal-button" id = "busted-terminal-maximize"></div >
+					<div class = "busted-terminal-button" id = "busted-terminal-minimize-button"></div >
+					<div class = "busted-terminal-button" id = "busted-terminal-maximize-button"></div >
+					<div class = "busted-terminal-button" id = "busted-terminal-close-button"></div >
 				</div >
 			</div >
 			<div class = "term" id = "Busted-OS"></div >
@@ -60,27 +60,7 @@
             $("#busted-terminal-input").focus();
           });
           
-          window.addEventListener("keydown", function (e) {
-            if (e.key === "Enter") {
-              var input = $("#busted-terminal-input");
-              input.text("");
-              $("#busted-terminal-content").append("<div>" + input + "</div>");
-              input.focus();
-            }
-          });
           
-          $("#busted-terminal-close").click(function () {
-            $("#Busted-terminal").hide();
-          });
-          
-          $("#busted-terminal-minimize").click(function () {
-            $("#Busted-terminal").hide();
-          });
-          
-          
-          window.addEventListener("resize", function () {
-            resize();
-          });
 		</script >
 	</body >
 
